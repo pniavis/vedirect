@@ -283,6 +283,9 @@ class LineCoder:
     def __check_range_inclusive(self, value, lb, ub):
         return value >= lb and value <= ub
 
+    def __check_value_in_set(self, value, pset):
+        return value in set
+
     def read_battery_max_current(self):
         self.dispatch(self.__get_command(0xedf0))
 
