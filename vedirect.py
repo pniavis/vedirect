@@ -312,3 +312,13 @@ class LineCoder:
     def read_absorption_voltage(self):
         self.dispatch(self.__get_command(0xedf7))
 
+    def read_battery_voltage(self):
+        self.dispatch(self.__get_command(0xedef))
+        pass
+
+    def write_battery_voltage(self, value):
+        if not self.__check_range_inclusive(value, [0, 12]):
+            return
+        self.dispatch(self.__set_command_byte(0xedef, value))
+        pass
+
