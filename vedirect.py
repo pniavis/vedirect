@@ -166,7 +166,9 @@ class HexDecoder:
         elif id == 0xedf0:
             return mktopic('battery/maximum_current', packet_source.getu16())
         elif id == 0xedef:
-            return mktopic('battery/nominal_voltage', packet_source.getu8())
+            return mktopic('battery/voltage', packet_source.getu8())
+        elif id == 0xedea:
+            return mktopic('battery/voltage_setting', packet_source.getu8())
 
         return []
 
@@ -284,7 +286,7 @@ class LineCoder:
         return value >= lb and value <= ub
 
     def __check_value_in_set(self, value, pset):
-        return value in set
+        return value in pset
 
     def read_battery_max_current(self):
         self.dispatch(self.__get_command(0xedf0))
@@ -313,12 +315,10 @@ class LineCoder:
         self.dispatch(self.__get_command(0xedf7))
 
     def read_battery_voltage(self):
-        self.dispatch(self.__get_command(0xedef))
-        pass
+        self.dispatch(self.__get_command(0xedea))
 
     def write_battery_voltage(self, value):
-        if not self.__check_range_inclusive(value, [0, 12]):
+        if not self.__check_value_in_set(value, [0, 12]):
             return
         self.dispatch(self.__set_command_byte(0xedef, value))
-        pass
 

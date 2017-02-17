@@ -23,39 +23,30 @@ class Parser:
 
     def _read_battery_max_current(self, topic, payload):
         self._line_encoder.read_battery_max_current()
-        pass
 
     def _read_float_voltage(self, topic, payload):
         self._line_encoder.read_float_voltage()
-        pass
 
     def _read_equalization_voltage(self, topic, payload):
         self._line_encoder.read_equalization_voltage()
-        pass
 
     def _read_auto_equalization_mode(self, topic, payload):
         self._line_encoder.read_auto_equalization_mode()
-        pass
 
     def _write_auto_equalization_mode(self, topic, payload):
         self._line_encoder.write_auto_equalization_mode(int(payload))
-        pass
 
     def _read_bulk_time_limit(self, topic, payload):
         self._line_encoder.read_bulk_time_limit()
-        pass
 
     def _read_absorption_time_limit(self, topic, payload):
         self._line_encoder.read_absorption_time_limit()
-        pass
 
     def _read_battery_voltage(self, topic, payload):
         self._line_encoder.read_battery_voltage()
-        pass
 
     def _write_battery_voltage(self, topic, payload):
         self._line_encoder.write_battery_voltage(int(payload))
-        pass
 
     def parse(self, topic, payload):
         self._commands[topic](topic, payload)
