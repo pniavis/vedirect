@@ -150,25 +150,25 @@ class HexDecoder:
             return [{'topic':topic, 'payload':payload}]
 
         if id == 0x0201:
-            return mktopic('device/state', packet_source.getu8())
+            return mktopic('device/state/value', packet_source.getu8())
         elif id == 0xedfd:
-            return mktopic('battery/auto_equalization', packet_source.getu8())
+            return mktopic('battery/auto_equalization/value', packet_source.getu8())
         elif id == 0xedfc:
-            return mktopic('battery/bulk_time_limit', packet_source.getu16())
+            return mktopic('battery/bulk_time_limit/value', packet_source.getu16())
         elif id == 0xedfb:
-            return mktopic('battery/absorption_time_limit', packet_source.getu16())
+            return mktopic('battery/absorption_time_limit/value', packet_source.getu16())
         elif id == 0xedf7:
-            return mktopic('battery/absorption_voltage', packet_source.getu16())
+            return mktopic('battery/absorption_voltage/value', packet_source.getu16())
         elif id == 0xedf6:
-            return mktopic('battery/float_voltage', packet_source.getu16())
+            return mktopic('battery/float_voltage/value', packet_source.getu16())
         elif id == 0xedf4:
-            return mktopic('battery/equalization_voltage', packet_source.getu16())
+            return mktopic('battery/equalization_voltage/value', packet_source.getu16())
         elif id == 0xedf0:
-            return mktopic('battery/maximum_current', packet_source.getu16())
+            return mktopic('battery/maximum_current/value', packet_source.getu16())
         elif id == 0xedef:
-            return mktopic('battery/voltage', packet_source.getu8())
+            return mktopic('battery/voltage/value', packet_source.getu8())
         elif id == 0xedea:
-            return mktopic('battery/voltage_setting', packet_source.getu8())
+            return mktopic('battery/voltage_setting/value', packet_source.getu8())
 
         return []
 
