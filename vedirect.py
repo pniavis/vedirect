@@ -315,10 +315,13 @@ class LineCoder:
         self.dispatch(self.__get_command(0xedf7))
 
     def read_battery_voltage(self):
-        self.dispatch(self.__get_command(0xedea))
+        self.dispatch(self.__get_command(0xedf7))
 
     def write_battery_voltage(self, value):
         if not self.__check_value_in_set(value, [0, 12]):
             return
         self.dispatch(self.__set_command_byte(0xedef, value))
+
+    def read_temperature_compensation(self):
+        self.dispatch(self.__get_command(0xedf2))
 

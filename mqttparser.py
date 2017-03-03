@@ -15,6 +15,7 @@ class Parser:
                 "battery/absorption_time_limit/read": self._read_absorption_time_limit,
                 "battery/voltage/read": self._read_battery_voltage,
                 "battery/voltage/write": self._write_battery_voltage,
+                "battery/temperature_compensation/read": self._read_battery_temperature_compensation,
 
             })
 
@@ -47,6 +48,9 @@ class Parser:
 
     def _write_battery_voltage(self, topic, payload):
         self._line_encoder.write_battery_voltage(int(payload))
+
+    def _read_battery_temperature_compensation(self, topic, payload):
+        self._line_encoder.read_battery_temperature_compensation()
 
     def parse(self, topic, payload):
         self._commands[topic](topic, payload)
